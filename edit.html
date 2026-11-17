@@ -1,0 +1,219 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Student Details</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Background - Aqua + Sky Blue */
+
+        body {
+            font-family: 'Poppins', sans-serif;
+
+            background:
+                radial-gradient(
+                    circle at 5% 5%,
+                    #bcecf0,
+                    transparent 40%
+                ),
+                radial-gradient(
+                    circle at 95% 95%,
+                    #c9ddff,
+                    transparent 40%
+                ),
+                linear-gradient(
+                    135deg,
+                    #eafaff,
+                    #e5efff
+                );
+
+            background-attachment: fixed;
+            color: #263746;
+            padding: 25px;
+            min-height: 100vh;
+        }
+
+        /* Heading */
+
+        h1 {
+            text-align: center;
+            color: #294c60;
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 18px;
+        }
+
+        h1 span {
+            color: #287c83;
+        }
+
+        /* Update Form */
+
+        form {
+            width: 450px;
+            max-width: 100%;
+            margin: auto;
+            background: #fff;
+            border: 1px solid #dce9ef;
+            border-radius: 18px;
+            padding: 16px 30px;
+            box-shadow: 0 8px 25px rgba(38, 55, 70, .09);
+            transition: .3s ease;
+        }
+
+        form:hover {
+            box-shadow: 0 14px 30px rgba(38, 100, 110, .14);
+            border-color: #80b8ba;
+        }
+
+        /* Labels */
+
+        label {
+            display: block;
+            font-size: 14px;
+            font-weight: 600;
+            color: #294c60;
+            margin-bottom: 3px;
+        }
+
+        /* Input Fields */
+
+        input, select {
+            width: 100%;
+            padding: 7px 14px;
+            border: 1px solid #dce5e9;
+            border-radius: 8px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 14px;
+            color: #263746;
+            background-color: #f3f7f8;
+            outline: none;
+            transition: .3s ease;
+        }
+
+        input:focus, select:focus {
+            border-color: #4c9c9d;
+            background-color: #fff;
+            box-shadow: 0 0 0 3px rgba(40, 124, 131, .10);
+        }
+
+        /* Form Groups */
+
+        .form-group {
+            margin-bottom: 7px;
+        }
+
+        /* Update Button */
+
+        button {
+            width: 100%;
+            padding: 9px;
+            margin-top: 3px;
+            background: linear-gradient(120deg, #287c83, #386b91);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: .3s ease;
+            box-shadow: 0 5px 12px rgba(40, 124, 131, .2);
+        }
+
+        button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 18px rgba(40, 124, 131, .3);
+            background: linear-gradient(120deg, #21666d, #2d5878);
+        }
+
+        /* Responsive Design */
+
+        @media(max-width: 550px) {
+            body {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 22px;
+            }
+
+            form {
+                padding: 16px 20px;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <h1>
+        Update <span>Student Details</span> of {{std[1]}}
+    </h1>
+
+    <form action="/student/edit/{{std[0]}}" method="post">
+
+        <div class="form-group">
+            <label>Name :</label>
+            <input type="text" name="name" value="{{std[1]}}">
+        </div>
+
+        <div class="form-group">
+            <label>Age :</label>
+            <input type="number" name="age" value="{{std[2]}}">
+        </div>
+
+        <div class="form-group">
+            <label>Gender :</label>
+            <input type="text" name="gender" value="{{std[3]}}">
+        </div>
+
+        <div class="form-group">
+            <label>Marks :</label>
+            <input type="number" name="marks" value="{{std[4]}}">
+        </div>
+
+        <div class="form-group">
+            <label>Course :</label>
+            <input type="text" name="course" value="{{std[5]}}">
+        </div>
+
+        <div class="form-group">
+            <label>Image URL :</label>
+            <input type="text" name="image" value="{{std[6]}}">
+        </div>
+
+        <div class="form-group">
+            <label>Attendance :</label>
+
+            <select name="status">
+
+                <option value="1" {% if std[7] == 1 %}selected{% endif %}>
+                    Present
+                </option>
+
+                <option value="0" {% if std[7] == 0 %}selected{% endif %}>
+                    Absent
+                </option>
+
+            </select>
+        </div>
+
+        <button type="submit">UPDATE DETAILS</button>
+
+    </form>
+
+</body>
+</html>

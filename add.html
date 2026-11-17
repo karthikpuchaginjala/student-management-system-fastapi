@@ -1,0 +1,228 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Student</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Background - Aqua + Sky Blue */
+
+        body {
+            font-family: 'Poppins', sans-serif;
+
+            background:
+                radial-gradient(
+                    circle at 5% 5%,
+                    #bcecf0,
+                    transparent 40%
+                ),
+                radial-gradient(
+                    circle at 95% 95%,
+                    #c9ddff,
+                    transparent 40%
+                ),
+                linear-gradient(
+                    135deg,
+                    #eafaff,
+                    #e5efff
+                );
+
+            background-attachment: fixed;
+            color: #263746;
+            padding: 25px;
+            min-height: 100vh;
+        }
+
+        /* Heading */
+
+        h1 {
+            text-align: center;
+            color: #294c60;
+            font-size: 32px;
+            font-weight: 800;
+            letter-spacing: 1px;
+            margin-bottom: 18px;
+            animation: headingEntry 0.8s ease;
+        }
+
+        h1 span {
+            color: #287c83;
+        }
+
+        /* Form Container */
+
+        form {
+            width: 480px;
+            max-width: 100%;
+            margin: auto;
+            background: #ffffff;
+            padding: 18px 32px;
+            border: 1px solid #dce9ef;
+            border-radius: 16px;
+            box-shadow: 0 8px 25px rgba(38, 55, 70, 0.09);
+            animation: formEntry 0.8s ease;
+            transition: 0.3s;
+        }
+
+        form:hover {
+            box-shadow: 0 12px 30px rgba(38, 100, 110, 0.13);
+            border-color: #80b8ba;
+        }
+
+        /* Labels */
+
+        label {
+            display: block;
+            font-size: 14px;
+            font-weight: 600;
+            color: #405b70;
+            margin-bottom: 4px;
+        }
+
+        /* Inputs */
+
+        input, select {
+            width: 100%;
+            padding: 8px 14px;
+            border: 1px solid #d5e0e5;
+            border-radius: 8px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 13px;
+            color: #344b5a;
+            background-color: #f5f8fa;
+            outline: none;
+            transition: 0.3s ease;
+            margin-bottom: 10px;
+        }
+
+        input:focus, select:focus {
+            border-color: #45989b;
+            background-color: #ffffff;
+            box-shadow: 0 0 0 3px rgba(69, 152, 155, 0.12);
+        }
+
+        input::placeholder {
+            color: #a0adb5;
+        }
+
+        /* Submit Button */
+
+        button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 3px;
+            background: linear-gradient(120deg, #287c83, #386b91);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 15px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            transition: 0.3s ease;
+            box-shadow: 0 5px 12px rgba(40, 124, 131, 0.2);
+        }
+
+        button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 18px rgba(40, 124, 131, 0.3);
+            background: linear-gradient(120deg, #21666d, #2d5878);
+        }
+
+        button:active {
+            transform: scale(0.98);
+        }
+
+        /* Animations */
+
+        @keyframes headingEntry {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes formEntry {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+
+        @media (max-width: 550px) {
+            body {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 25px;
+            }
+
+            form {
+                padding: 18px 22px;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <h1>ADD <span>STUDENT</span></h1>
+
+    <form action="/students/add{{std_id}}" method="post">
+
+        <label for="name">Student Name</label>
+        <input type="text" id="name" name="name" placeholder="Enter student name">
+
+        <label for="age">Age</label>
+        <input type="number" id="age" name="age" placeholder="Enter age">
+
+        <label for="gender">Gender</label>
+        <input type="text" id="gender" name="gender" placeholder="Enter gender">
+
+        <label for="marks">Marks</label>
+        <input type="number" id="marks" name="marks" placeholder="Enter marks">
+
+        <label for="course">Course</label>
+        <input type="text" id="course" name="course" placeholder="Enter course">
+
+        <label for="image">Profile Image URL</label>
+        <input type="text" id="image" name="image" placeholder="Enter image URL">
+
+        <label for="status">Attendance Status</label>
+        <select name="status" id="status">
+            <option value="1">Present</option>
+            <option value="0">Absent</option>
+        </select>
+
+        <button type="submit">+ ADD STUDENT</button>
+
+    </form>
+
+</body>
+</html>

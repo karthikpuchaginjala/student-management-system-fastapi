@@ -1,0 +1,327 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Dashboard</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Background - Aqua + Sky Blue */
+
+        body {
+            font-family: 'Poppins', sans-serif;
+
+            background:
+                radial-gradient(
+                    circle at 5% 5%,
+                    #bcecf0,
+                    transparent 40%
+                ),
+                radial-gradient(
+                    circle at 95% 95%,
+                    #c9ddff,
+                    transparent 40%
+                ),
+                linear-gradient(
+                    135deg,
+                    #eafaff,
+                    #e5efff
+                );
+
+            background-attachment: fixed;
+            min-height: 100vh;
+            padding: 35px;
+            color: #263746;
+        }
+
+        /* Heading */
+
+        .heading {
+            text-align: center;
+            font-size: 34px;
+            font-weight: 800;
+            letter-spacing: 1px;
+            color: #294c60;
+            margin-bottom: 35px;
+            animation: heading 1s ease;
+        }
+
+        .heading span {
+            color: #258b91;
+        }
+
+        /* Add Student Button */
+
+        .add-btn {
+            display: inline-block;
+            background: linear-gradient(120deg, #287c83, #386b91);
+            color: white;
+            padding: 13px 24px;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 0.4px;
+            transition: 0.3s;
+            box-shadow: 0 5px 12px rgba(40, 124, 131, 0.2);
+        }
+
+        .add-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 18px rgba(40, 124, 131, 0.3);
+        }
+
+        /* Card Container */
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 22px;
+            margin-top: 35px;
+        }
+
+        /* Student Card */
+
+        .card {
+            width: calc((100% - 66px) / 4);
+            background: #ffffff;
+            border: 1px solid #dce9ef;
+            border-radius: 17px;
+            padding: 24px 18px;
+            text-align: center;
+            box-shadow: 0 8px 25px rgba(38, 55, 70, 0.08);
+            transition: 0.35s ease;
+            animation: cardEntry 0.7s ease both;
+        }
+
+        .card:nth-child(4n+1) {
+            animation-delay: 0.1s;
+        }
+
+        .card:nth-child(4n+2) {
+            animation-delay: 0.2s;
+        }
+
+        .card:nth-child(4n+3) {
+            animation-delay: 0.3s;
+        }
+
+        .card:nth-child(4n+4) {
+            animation-delay: 0.4s;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            border-color: #80b8ba;
+            box-shadow: 0 12px 25px rgba(38, 100, 110, 0.13);
+        }
+
+        /* Student Image */
+
+        .card img {
+            width: 115px;
+            height: 115px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 4px solid #c5e1df;
+            padding: 3px;
+            transition: 0.4s;
+        }
+
+        .card:hover img {
+            transform: scale(1.07);
+            border-color: #4c9c9d;
+        }
+
+        /* Student ID */
+
+        .card h1 {
+            color: #287c83;
+            font-size: 19px;
+            font-weight: 700;
+            margin-top: 15px;
+            margin-bottom: 18px;
+        }
+
+        /* Student Details */
+
+        .card p {
+            color: #647581;
+            font-size: 13px;
+            font-weight: 500;
+            text-align: left;
+            padding: 9px 10px;
+            margin: 5px 0;
+            background-color: #f3f7f8;
+            border-radius: 6px;
+            transition: 0.3s;
+        }
+
+        .card p:hover {
+            background-color: #e5f1f0;
+            padding-left: 15px;
+        }
+
+        /* Buttons */
+
+        .card a, .card button {
+            display: inline-block;
+            padding: 9px 13px;
+            margin: 12px 2px 0;
+            border: none;
+            border-radius: 6px;
+            text-decoration: none;
+            font-family: 'Poppins', sans-serif;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .view {
+            background-color: #d6eae5;
+            color: #286451;
+        }
+
+        .update {
+            background-color: #dce7f2;
+            color: #355e85;
+        }
+
+        .delete {
+            background-color: #f1dfd9;
+            color: #965447;
+        }
+
+        .view:hover {
+            background-color: #a9d5c8;
+            transform: translateY(-3px);
+        }
+
+        .update:hover {
+            background-color: #b7cee5;
+            transform: translateY(-3px);
+        }
+
+        .delete:hover {
+            background-color: #e6bdb0;
+            transform: translateY(-3px);
+        }
+
+        .card form {
+            display: inline-block;
+        }
+
+        /* Animations */
+
+        @keyframes cardEntry {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes heading {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Design */
+
+        @media (max-width: 1100px) {
+            .card {
+                width: calc((100% - 44px) / 3);
+            }
+        }
+
+        @media (max-width: 800px) {
+            .card {
+                width: calc((100% - 22px) / 2);
+            }
+        }
+
+        @media (max-width: 550px) {
+            body {
+                padding: 18px;
+            }
+
+            .card {
+                width: 100%;
+            }
+
+            .heading {
+                font-size: 25px;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <h1 class="heading">
+        Student <span>Management</span> Dashboard
+    </h1>
+
+    <a href="/students/add" class="add-btn">
+        + Add Student
+    </a>
+
+    <div class="container">
+
+        {% for std in st %}
+
+        <div class="card">
+
+            <img src="{{std[6]}}" alt="Student Image">
+
+            <h1>Student ID : {{std[0]}}</h1>
+
+            <p>Name : {{std[1]}}</p>
+            <p>Age : {{std[2]}}</p>
+            <p>Gender : {{std[3]}}</p>
+            <p>Marks : {{std[4]}}</p>
+            <p>Course : {{std[5]}}</p>
+
+            <a href="/students/{{std[0]}}" class="view">
+                View
+            </a>
+
+            <a href="/students/edit/{{std[0]}}" class="update">
+                Update
+            </a>
+
+            <form action="/students/del/{{std[0]}}" method="post">
+                <button class="delete">Delete</button>
+            </form>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+</body>
+</html>

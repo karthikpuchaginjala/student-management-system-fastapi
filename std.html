@@ -1,0 +1,261 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Details</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Background - Aqua + Sky Blue */
+
+        body {
+            font-family: 'Poppins', sans-serif;
+
+            background:
+                radial-gradient(
+                    circle at 5% 5%,
+                    #bcecf0,
+                    transparent 40%
+                ),
+                radial-gradient(
+                    circle at 95% 95%,
+                    #c9ddff,
+                    transparent 40%
+                ),
+                linear-gradient(
+                    135deg,
+                    #eafaff,
+                    #e5efff
+                );
+
+            background-attachment: fixed;
+            color: #263746;
+            padding: 35px;
+            min-height: 100vh;
+        }
+
+        /* Heading */
+
+        .heading {
+            text-align: center;
+            color: #294c60;
+            font-size: 30px;
+            font-weight: 700;
+            margin-bottom: 35px;
+            animation: headingEntry 0.8s ease;
+        }
+
+        .heading span {
+            color: #287c83;
+        }
+
+        /* Student Card */
+
+        .card {
+            width: 430px;
+            max-width: 100%;
+            margin: 30px auto;
+            background: #ffffff;
+            border: 1px solid #dce9ef;
+            border-radius: 18px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 8px 25px rgba(38, 55, 70, 0.09);
+            transition: 0.35s ease;
+            animation: cardEntry 0.8s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-7px);
+            box-shadow: 0 14px 30px rgba(38, 100, 110, 0.14);
+            border-color: #80b8ba;
+        }
+
+        /* Student Image */
+
+        .card img {
+            width: 140px;
+            height: 140px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 5px solid #c5e1df;
+            padding: 3px;
+            margin-bottom: 18px;
+            transition: 0.4s ease;
+        }
+
+        .card:hover img {
+            transform: scale(1.07);
+            border-color: #4c9c9d;
+        }
+
+        /* Student ID */
+
+        .card h1 {
+            font-size: 23px;
+            font-weight: 700;
+            color: #287c83;
+            margin-bottom: 20px;
+        }
+
+        /* Student Information */
+
+        .card p {
+            font-size: 14px;
+            font-weight: 500;
+            color: #647581;
+            background-color: #f3f7f8;
+            padding: 12px 15px;
+            margin: 9px 0;
+            border-radius: 8px;
+            text-align: left;
+            transition: 0.3s;
+        }
+
+        .card p:hover {
+            background-color: #e5f1f0;
+            padding-left: 20px;
+        }
+
+        /* Home Button */
+
+        .home-btn {
+            display: inline-block;
+            background: linear-gradient(120deg, #287c83, #386b91);
+            color: white;
+            padding: 12px 28px;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            margin-top: 18px;
+            transition: 0.3s ease;
+            box-shadow: 0 5px 12px rgba(40, 124, 131, 0.2);
+        }
+
+        .home-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 18px rgba(40, 124, 131, 0.3);
+            background: linear-gradient(120deg, #21666d, #2d5878);
+        }
+
+        /* Student Attendance Status */
+
+        .status {
+            width: 150px;
+            padding: 11px 20px;
+            border: none;
+            border-radius: 8px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+            color: white;
+            margin-top: 15px;
+            cursor: default;
+        }
+
+        .present {
+            background-color: #198754;
+            box-shadow: 0 4px 10px rgba(25, 135, 84, 0.2);
+        }
+
+        .absent {
+            background-color: #dc3545;
+            box-shadow: 0 4px 10px rgba(220, 53, 69, 0.2);
+        }
+
+        /* Animations */
+
+        @keyframes headingEntry {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes cardEntry {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Mobile Responsive */
+
+        @media (max-width: 550px) {
+            body {
+                padding: 20px;
+            }
+
+            .heading {
+                font-size: 23px;
+            }
+
+            .card {
+                padding: 22px;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <h1 class="heading">
+        Student <span>Profile</span> Details
+    </h1>
+
+    <div class="card">
+
+        <img src="{{std[6]}}" alt="Student Image">
+
+        <h1>Student ID : {{std[0]}}</h1>
+
+        <p>Name : {{std[1]}}</p>
+        <p>Age : {{std[2]}}</p>
+        <p>Gender : {{std[3]}}</p>
+        <p>Marks : {{std[4]}}</p>
+        <p>Course : {{std[5]}}</p>
+
+        {% if std[7] %}
+
+            <button class="status present">
+                Present
+            </button>
+
+        {% else %}
+
+            <button class="status absent">
+                Absent
+            </button>
+
+        {% endif %}
+
+        <a href="/" class="home-btn">
+            ← Back to Home
+        </a>
+
+    </div>
+
+</body>
+</html>
